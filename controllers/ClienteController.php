@@ -34,9 +34,9 @@ class ClienteController {
             }
 
             // Garante que todas as propriedades necessárias existam
-            $cliente->nome = $cliente->nome ?? '';
-            $cliente->email_portal = $cliente->email_portal ?? '';
-            $cliente->senha_portal = $cliente->senha_portal ?? '';
+            $cliente['nome'] = $cliente['nome'] ?? '';
+            $cliente['email_portal'] = $cliente['email_portal'] ?? '';
+            $cliente['senha_portal'] = $cliente['senha_portal'] ?? '';
 
             require_once 'views/clientes/form.php';
         } else {
