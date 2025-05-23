@@ -18,6 +18,7 @@ class ClienteController {
     }
 
     public function criar() {
+        $cliente = null;
         require_once 'views/clientes/form.php';
     }
 
@@ -27,12 +28,19 @@ class ClienteController {
             $cliente = $this->cliente->readOne();
 
             if (!$cliente) {
+                $_SESSION['error'] = "Cliente não encontrado.";
                 header('Location: index.php?route=clientes');
                 exit;
             }
 
+            // Garante que todas as propriedades necessárias existam
+            $cliente->nome = $cliente->nome ?? '';
+            $cliente->email_portal = $cliente->email_portal ?? '';
+            $cliente->senha_portal = $cliente->senha_portal ?? '';
+
             require_once 'views/clientes/form.php';
         } else {
+            $_SESSION['error'] = "ID do cliente não fornecido.";
             header('Location: index.php?route=clientes');
             exit;
         }
@@ -40,12 +48,9 @@ class ClienteController {
 
     public function salvar() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->cliente->nome = $_POST['nome'];
-            $this->cliente->email = $_POST['email'] ?? '';
-            $this->cliente->telefone = $_POST['telefone'] ?? '';
-            $this->cliente->endereco = $_POST['endereco'] ?? '';
-            $this->cliente->email_portal = $_POST['email_portal'];
-            $this->cliente->senha_portal = $_POST['senha_portal'];
+            $this->cliente->nome = $_POST['nome'] ?? '';
+            $this->cliente->email_portal = $_POST['email_portal'] ?? '';
+            $this->cliente->senha_portal = $_POST['senha_portal'] ?? '';
 
             if (isset($_POST['id'])) {
                 $this->cliente->id = $_POST['id'];
