@@ -1,5 +1,5 @@
 RewriteEngine On
-RewriteBase /PROJETOS/projeto-chamados/
+RewriteBase /
 
 # Se o arquivo ou diretório não existir, redireciona para index.php
 RewriteCond %{REQUEST_FILENAME} !-f
