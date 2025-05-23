@@ -1,6 +1,6 @@
 <?php
-// Configurações gerais do projeto
-define('BASE_URL', 'http://localhost/PROJETOS/projeto-chamados');
+// Define a URL base do sistema
+define('BASE_URL', getenv('APP_URL') ?: 'http://localhost/PROJETOS/projeto-chamados');
 define('APP_NAME', 'Sistema de Chamados');
 
 // Configurações de timezone
