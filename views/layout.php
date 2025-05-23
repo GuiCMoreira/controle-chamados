@@ -10,17 +10,17 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand" href="<?php echo BASE_URL; ?>/index.php?route=clientes"><?php echo APP_NAME; ?></a>
+            <a class="navbar-brand" href="index.php?route=clientes"><?php echo APP_NAME; ?></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo BASE_URL; ?>/index.php?route=clientes">Clientes</a>
+                        <a class="nav-link" href="index.php?route=clientes">Clientes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo BASE_URL; ?>/index.php?route=clientes/criar">Novo Cliente</a>
+                        <a class="nav-link" href="index.php?route=clientes/criar">Novo Cliente</a>
                     </li>
                 </ul>
             </div>

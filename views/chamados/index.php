@@ -6,7 +6,7 @@ require_once 'views/layouts/header.php';
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1>Chamados</h1>
-        <a href="<?php echo BASE_URL; ?>/index.php?route=chamados/criar<?php echo isset($_GET['cliente_id']) ? '&cliente_id=' . $_GET['cliente_id'] : ''; ?>" class="btn btn-primary">
+        <a href="index.php?route=chamados/criar<?php echo isset($_GET['cliente_id']) ? '&cliente_id=' . $_GET['cliente_id'] : ''; ?>" class="btn btn-primary">
             <i class="bi bi-plus-circle"></i> Novo Chamado
         </a>
     </div>
@@ -14,11 +14,11 @@ require_once 'views/layouts/header.php';
     <div class="mb-4">
         <div class="d-flex align-items-center mb-2">
             <h5 class="me-3 mb-0">Filtrar por Cliente:</h5>
-            <a href="<?php echo BASE_URL; ?>/index.php?route=chamados" class="btn btn-outline-secondary me-2 <?php echo !isset($_GET['cliente_id']) ? 'active' : ''; ?>">
+            <a href="index.php?route=chamados" class="btn btn-outline-secondary me-2 <?php echo !isset($_GET['cliente_id']) ? 'active' : ''; ?>">
                 Todos
             </a>
             <?php foreach ($clientes as $cliente): ?>
-                <a href="<?php echo BASE_URL; ?>/index.php?route=chamados&cliente_id=<?php echo $cliente['id']; ?>" 
+                <a href="index.php?route=chamados&cliente_id=<?php echo $cliente['id']; ?>" 
                    class="btn btn-outline-primary me-2 <?php echo (isset($_GET['cliente_id']) && $_GET['cliente_id'] == $cliente['id']) ? 'active' : ''; ?>">
                     <?php echo $cliente['nome']; ?>
                 </a>
@@ -73,13 +73,13 @@ require_once 'views/layouts/header.php';
                     <td><?php echo $chamado['ultima_verificacao'] ? date('d/m/Y', strtotime($chamado['ultima_verificacao'])) : 'Nunca'; ?></td>
                     <td>
                         <div class="btn-group">
-                            <a href="<?php echo BASE_URL; ?>/index.php?route=chamados/editar&id=<?php echo $chamado['id']; ?>" class="btn btn-sm btn-primary">
+                            <a href="index.php?route=chamados/editar&id=<?php echo $chamado['id']; ?>" class="btn btn-sm btn-primary">
                                 <i class="bi bi-pencil"></i>
                             </a>
                             <button type="button" class="btn btn-sm btn-success verificar-btn" data-id="<?php echo $chamado['id']; ?>">
                                 <i class="bi bi-check-circle"></i>
                             </button>
-                            <a href="<?php echo BASE_URL; ?>/index.php?route=chamados/excluir&id=<?php echo $chamado['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza que deseja excluir este chamado?')">
+                            <a href="index.php?route=chamados/excluir&id=<?php echo $chamado['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza que deseja excluir este chamado?')">
                                 <i class="bi bi-trash"></i>
                             </a>
                         </div>
@@ -111,7 +111,7 @@ require_once 'views/layouts/header.php';
     document.querySelectorAll('.verificar-btn').forEach(button => {
         button.addEventListener('click', function() {
             const id = this.dataset.id;
-            fetch('<?php echo BASE_URL; ?>/index.php?route=chamados/verificar&id=' + id, {
+            fetch('index.php?route=chamados/verificar&id=' + id, {
                 method: 'POST'
             })
             .then(response => response.json())
