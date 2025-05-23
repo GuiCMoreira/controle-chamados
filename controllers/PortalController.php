@@ -17,8 +17,7 @@ class PortalController {
         }
 
         $this->cliente->id = $_GET['id'];
-        $stmt = $this->cliente->readOne();
-        $cliente = $stmt->fetch(PDO::FETCH_ASSOC);
+        $cliente = $this->cliente->readOne();
 
         if (!$cliente) {
             header('Location: index.php?route=clientes');
